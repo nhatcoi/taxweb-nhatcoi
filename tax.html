@@ -1,10 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <title>Tính thuế thu nhập</title>
+  <style>
+    body {
+      background-color: blanchedalmond;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 400px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 5px;
+    }
+    button {
+      background-color: #af4c93;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-$END$
+<div class="container">
+  <h1>Tính thuế thu nhập</h1>
+  <div class="form-group">
+    <label for="monthlyIncome">Lương hàng tháng (VND):</label>
+    <input type="number" id="monthlyIncome" placeholder="Nhập lương hàng tháng" required>
+  </div>
+  <div class="form-group">
+    <label for="dependents">Số người phụ thuộc:</label>
+    <input type="number" id="dependents" placeholder="Nhập số người phụ thuộc" required>
+  </div>
+  <button id="calculateButton">Tính thuế</button>
+  <div id="result"></div>
+</div>
+
+<script>
+  document.getElementById("calculateButton").addEventListener("click", function() {
+    const monthlyIncome = parseFloat(document.getElementById("monthlyIncome").value);
+    const dependents = parseInt(document.getElementById("dependents").value);
+
+    // Thực hiện tính toán thuế ở đây và hiển thị kết quả
+    const taxAmount = calculateTax(monthlyIncome, dependents);
+    document.getElementById("result").innerHTML = `Tổng thuế thu nhập cần trả: ${taxAmount} VND`;
+  });
+
+  function calculateTax(income, dependents) {
+    // Thực hiện tính toán thuế theo quy tắc của bạn ở đây
+    // Ví dụ: thuế = 10% lương - 200000 VND cho mỗi người phụ thuộc
+    const gtt = 11000000, ptt = 4400000
+    var TNTT = income - gtt - dependents * ptt
+    var tax, m = 1000000
+    if(TNTT <= 0) {
+      tax = 0
+    }
+    if (TNTT <= 5*m) {
+      tax = TNTT * 0.05
+    } else if(TNTT <= 10*m) {
+      tax = TNTT * 0.1 - 0.25
+    }
+    return tax > 0 ? tax : 0;
+  }
+</script>
 </body>
 </html>
