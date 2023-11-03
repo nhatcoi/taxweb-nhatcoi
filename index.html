@@ -72,14 +72,14 @@
     var TNTT = income - gtt - dependents * ptt
     var tax, m = 1000000
     if(TNTT <= 0) {
-      tax = 0
+      index = 0
     }
     if (TNTT <= 5*m) {
-      tax = TNTT * 0.05
+      index = TNTT * 0.05
     } else if(TNTT <= 10*m) {
-      tax = TNTT * 0.1 - 0.25
+      index = TNTT * 0.1 - 0.25
     }
-    return tax > 0 ? tax : 0;
+    return index > 0 ? index : 0;
   }
 </script>
 </body>
