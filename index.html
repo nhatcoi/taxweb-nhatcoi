@@ -43,6 +43,7 @@
 <body>
 <div class="container">
   <h1>Tính thuế thu nhập</h1>
+  <h4>(Nhật Côi)</h4>
   <div class="form-group">
     <label for="monthlyIncome">Lương hàng tháng (VND):</label>
     <input type="number" id="monthlyIncome" placeholder="Nhập lương hàng tháng" required>
@@ -72,14 +73,24 @@
     var TNTT = income - gtt - dependents * ptt
     var tax, m = 1000000
     if(TNTT <= 0) {
-      index = 0
+      tax = 0
     }
     if (TNTT <= 5*m) {
-      index = TNTT * 0.05
+      tax = TNTT * 0.05
     } else if(TNTT <= 10*m) {
-      index = TNTT * 0.1 - 0.25
+      tax = TNTT * 0.1 - (0.25*m)
+    } else if(TNTT <= 18*m) {
+      tax = TNTT * 0.15 - (0.75*m)
+    } else if(TNTT <= 32*m) {
+      tax = TNTT * 0.2 - (1.65*m)
+    } else if(TNTT <= 52*m) {
+      tax = TNTT * 0.25 - (3.12*m)
+    } else if(TNTT <= 80) {
+      tax = TNTT * 0.3 - (5.85*m)
+    } else {
+      tax = TNTT * 0.35 - (9.85*m)
     }
-    return index > 0 ? index : 0;
+    return tax > 0 ? tax : 0;
   }
 </script>
 </body>
