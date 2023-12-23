@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./style.css">
+  <title>Document</title>
+
+  <title>Tính thuế thu nhập</title>
+  
+</head>
+<body>
+<div class="container">
+  <h1>Tính thuế thu nhập</h1>
+  <h4>(Nhật Côi)</h4>
+  <div class="form-group">
+    <label for="monthlyIncome">Lương hàng tháng (VND):</label>
+    <input type="number" id="monthlyIncome" placeholder="Nhập lương hàng tháng" required>
+  </div>
+  <div class="form-group">
+    <label for="dependents">Số người phụ thuộc:</label>
+    <input type="number" id="dependents" placeholder="Nhập số người phụ thuộc" required>
+  </div>
+  <button id="calculateButton">Tính thuế</button>
+  <div id="result"></div>
+</div>
+
+<script src="./app.js"></script>
+</body>
+</html>
